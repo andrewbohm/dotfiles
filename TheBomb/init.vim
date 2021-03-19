@@ -29,7 +29,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Initialize plugin system
 call plug#end()
 
-source plugin/sets.vim
+source ~/.config/nvim-nightly/plugin/sets.vim
 
 colorscheme onehalfdark
 " colorscheme onehalflight
