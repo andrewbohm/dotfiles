@@ -1,5 +1,6 @@
 syntax on
 set exrc
+filetype plugin indent on
 set guicursor=
 set relativenumber
 set nu
