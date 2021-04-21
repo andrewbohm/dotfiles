@@ -81,6 +81,7 @@ let g:airline_theme='onehalfdark'
 "------ Filetypes ------"
 
 source ~/.config/nvim-nightly/plugin/sets.vim
+source ~/.config/nvim-nightly/plugin/netrw.vim
 source ~/.config/nvim-nightly/plugin/git.vim
 source ~/.config/nvim-nightly/plugin/lsp.vim
 source ~/.config/nvim-nightly/plugin/telescope.vim
