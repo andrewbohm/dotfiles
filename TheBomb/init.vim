@@ -65,19 +65,27 @@ Plug 'tpope/vim-projectionist'
 " prettier
 Plug 'sbdchd/neoformat'
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Themes
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'folke/tokyonight.nvim'
+
+" Lsp Trouble
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/lsp-trouble.nvim'
 
 " Initialize plugin system
 call plug#end()
 
 
-colorscheme onehalfdark
+"colorscheme onehalfdark
 " colorscheme onehalflight
-let g:airline_theme='onehalfdark'
+"let g:airline_theme='onehalfdark'
 " lightline
 " let g:lightline = { 'colorscheme': 'onehalfdark' }
 "
 " highlight Normal guibg=none
+colorscheme tokyonight
 "------ Filetypes ------"
 
 source ~/.config/nvim-nightly/plugin/sets.vim
@@ -87,6 +95,7 @@ source ~/.config/nvim-nightly/plugin/lsp.vim
 source ~/.config/nvim-nightly/plugin/telescope.vim
 source ~/.config/nvim-nightly/plugin/vimspector.vim
 source ~/.config/nvim-nightly/plugin/custom_comment.vim
+
 
 " Vimscript
 autocmd FileType vim setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4

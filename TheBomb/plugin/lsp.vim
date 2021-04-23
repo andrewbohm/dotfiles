@@ -64,7 +64,7 @@ autocmd BufEnter * lua require'completion'.on_attach()
     end
   end
 
-  local servers = {'pyright', 'gopls', 'rust_analyzer', 'tsserver'}
+  local servers = {'pyright', 'gopls', 'rust_analyzer', 'tsserver', 'bashls'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
@@ -114,6 +114,23 @@ autocmd BufEnter * lua require'completion'.on_attach()
 
   nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
 
+  -- formatting
+  require"lspconfig".efm.setup {
+    init_options = {documentFormatting = true},
+    filetypes = {"lua"},
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            lua = {
+                {
+                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
+                    formatStdin = true
+                }
+            }
+        }
+    }
+  }
+
   -- Enable diagnostics
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -127,6 +144,12 @@ autocmd BufEnter * lua require'completion'.on_attach()
     lsp_status.on_attach(client)
     vim.api.nvim_buf_set_keymap(0, 'n', 'gs', '<Cmd>ClangdSwitchSourceHeader<CR>', {noremap=true, silent=true})
   end
+  -- lsp trouble setup
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
 EOF
 
 " Completion
@@ -134,4 +157,5 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
 " -------------------- LSP ---------------------------------
