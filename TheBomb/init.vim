@@ -133,7 +133,7 @@ if executable('rg')
 endif
 
 let loaded_matchparen = 1
-let mapleader = " "
+let mapleader="\<space>"
 
 " Autocompletion
 set wildmode=longest,list,full
