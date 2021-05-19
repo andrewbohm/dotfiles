@@ -64,7 +64,7 @@ autocmd BufEnter * lua require'completion'.on_attach()
     end
   end
 
-  local servers = {'pyright', 'gopls', 'rust_analyzer', 'tsserver', 'bashls'}
+  local servers = {'pyright', 'gopls', 'rust_analyzer', 'tsserver', 'bashls', 'terraformls'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
